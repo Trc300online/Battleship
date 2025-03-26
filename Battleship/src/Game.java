@@ -4,19 +4,16 @@ public class Game {
         System.out.println("hola");
 
 
-       // Board board1 = new Board();
-       // Screen.printBoard(baord1);
-        Screen.getShipType();
-        /*Screen.printBoard(baord1);
+        Board board1 = new Board();
+        //Screen.printBoard(baord1);
 
         Board board2 = new Board();
-        Screen.printBoard(baord2);
-        Screen.getShipPlaceing(baord2);
-        Screen.printBoard(baord2);
+        //Screen.printBoard(baord2);
+
         boolean gameContinues = true;
         int count = 1;
 
-        while (gameContinues) {
+        /*while (gameContinues) {
 
 
             Screen.askMove;

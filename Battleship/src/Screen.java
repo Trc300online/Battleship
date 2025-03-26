@@ -13,11 +13,25 @@ public class Screen {
         System.out.println("selecciona el tipus de barca que voleu colocar:");
         Scanner typeIn = new Scanner(System.in);
         System.out.println("[C] Carrier(5) | [B] Battleship(4) | [D] Destroyer(3) | [S] Submarine(3) | [P] Patrol boat(2)");
-        char type = typeIn.next().toUpperCase().charAt(0);
-        switch (type){
-            case 'C':
-                return 'C';
-                break;
-        }
+        return typeIn.next().toUpperCase().charAt(0);
+    }
+
+    public static int getRows() {
+        System.out.println("Row: ");
+        Scanner rowScan = new Scanner(System.in);
+        return Integer.parseInt(rowScan.next()) - 1;
+    }
+
+    public static int getColumns() {
+        System.out.println("Column: ");
+        Scanner colScan = new Scanner(System.in);
+        return Integer.parseInt(colScan.next()) - 1;
+    }
+
+    public static char getDirection(){
+        System.out.println("direcció de la barca:");
+        Scanner dir = new Scanner(System.in);
+        System.out.println("[N] North | [S] South | [E] East | [W] West");
+        return dir.next().toUpperCase().charAt(0);
     }
 }
