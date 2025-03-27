@@ -5,7 +5,7 @@ public class Game {
 
 
         Board board1 = new Board();
-        //Screen.printBoard(baord1);
+        Screen.printBoard(board1);
 
         Board board2 = new Board();
         //Screen.printBoard(baord2);

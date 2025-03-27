@@ -34,4 +34,13 @@ public class Screen {
         System.out.println("[N] North | [S] South | [E] East | [W] West");
         return dir.next().toUpperCase().charAt(0);
     }
+
+    public static void printBoard(Board gameBoard){
+        for (int i = 0; i < Board.getRows(); i++) {
+            for (int j = 0; j < Board.getColumns(); j++) {
+                System.out.print(Board.getGameBoard()[i][j]);
+            }
+            System.out.println();
+        }
+    }
 }
