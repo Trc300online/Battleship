@@ -7,8 +7,8 @@ public class Ship {
     public int[] submarine = {4};
     public int[] patrol_boat = {5};
 
-    private int[] col;
-    private int[] row;
+    private int[][] positions;
+    private int size;
     private String nom;
 
     public Ship(){
