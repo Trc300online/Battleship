@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Ship {
     public int[] carrier = {1};
     public int[] battleship = {2};
@@ -19,10 +17,4 @@ public class Ship {
                                                 ShipType.submarine.getSize(), ShipType.submarine.getSize(), ShipType.submarine.getSize(),
                                                 ShipType.submarine.getSize(), ShipType.patrol_boat.getSize(), ShipType.patrol_boat.getSize(),
                                                 ShipType.patrol_boat.getSize(), ShipType.patrol_boat.getSize(), ShipType.patrol_boat.getSize()};
-
-    public static ArrayList<Ship> ships = new ArrayList<>();
-
-    public static ArrayList<Ship> getShips() {
-        return ships;
-    }
 }

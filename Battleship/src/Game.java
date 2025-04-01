@@ -5,10 +5,12 @@ public class Game {
 
 
         Board board1 = new Board();
+        board1.toggleHidden();
         Screen.printBoard(board1);
+        System.out.println("|||||||||||||||||||||||||||||||||||||");
 
         Board board2 = new Board();
-        //Screen.printBoard(baord2);
+        Screen.printBoard(board2);
 
         boolean gameContinues = true;
         int count = 1;
@@ -16,7 +18,8 @@ public class Game {
         /*while (gameContinues) {
 
 
-            Screen.askMove;
+            Screen.getRows();
+            Screen.getColumns();
             if (!Board.hitted(moves)){ // --> in board: if hitted == water return false;
                 Board.reveal();
                 if (count == 1){

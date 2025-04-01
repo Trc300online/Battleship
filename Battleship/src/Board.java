@@ -15,12 +15,12 @@ public class Board {
     }
 
     public void shipPlaceing(){
-        int rowPlace = new Random().nextInt(rows);
-        int colPlace = new Random().nextInt(columns);
         int direction;
         int count = 0;
 
         while (count < Ship.shipAmountSizeing.length) {
+            int rowPlace = new Random().nextInt(rows);
+            int colPlace = new Random().nextInt(columns);
             direction = new Random().nextInt(2);
             if (direction == 0) { // horizontal
                 if (colPlace < (columns - Ship.shipAmountSizeing[count])) {
@@ -55,8 +55,17 @@ public class Board {
         return rows;
     }
 
-    public static Tile[][] getGameBoard() {
+    public Tile[][] getGameBoard() {
         return gameBoard;
+    }
+
+    public void toggleHidden(){
+        for (int i = 0; i < Board.getRows(); i++) {
+            for (int j = 0; j < Board.getColumns(); j++) {
+                //gameBoard.getGameBoard()
+                gameBoard[i][j].isIsReveal() = !Tile.isIsReveal();
+            }
+        }
     }
 
 }
