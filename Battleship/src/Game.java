@@ -4,7 +4,7 @@ public class Game {
         System.out.println("hola");
 
 
-        Board board1 = new Board();
+        Board board1 = new Board(); // substituir board1 i board2 per use of count
         board1.toggleHidden();
         Screen.printBoard(board1);
         System.out.println("|||||||||||||||||||||||||||||||||||||");
@@ -18,9 +18,9 @@ public class Game {
         /*while (gameContinues) {
 
 
-            Screen.getRows();
-            Screen.getColumns();
-            if (!Board.hitted(moves)){ // --> in board: if hitted == water return false;
+            int x = Screen.getRows();
+            int y = Screen.getColumns();
+            if (!board1.hitted(x, y)){ // --> in board: if hitted == water return false;
                 Board.reveal();
                 if (count == 1){
                     count = 2;

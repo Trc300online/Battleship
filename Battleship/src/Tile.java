@@ -9,21 +9,26 @@ public class Tile {
         this.partShip = false;
         this.isWater = true;
         this.isHitted = false;
-        isReveal = false;
+        this.isReveal = false;
     }
 
     public void isPartShip(){
         partShip = true;
     }
     
-    public boolean isIsReveal() {
-        return this.isReveal;
+    public boolean isIsPartShip() {
+        return this.partShip;
     }
 
     public boolean setIsReveal(boolean isReveal) {
         this.isReveal = isReveal;
         return isReveal;
     }
+
+    public boolean toggleReveal() {
+        return isReveal = !isReveal;
+    }
+
 
     public String toString(){
         if (!isReveal) {
