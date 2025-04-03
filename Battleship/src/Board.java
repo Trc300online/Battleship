@@ -14,10 +14,10 @@ public class Board {
         shipPlaceing();
     }
 
-    public boolean checkPosition(int barca, int direccio, int rowPlace, int colPlace){
+    public boolean checkPosition(int barca, int direction, int rowPlace, int colPlace){
         int count = 0;
 
-        if (direccio == 0){
+        if (direction == 0){
             if (colPlace > (columns - Ship.shipAmountSizeing[barca])) {
                 return false;
             } else {
@@ -33,18 +33,20 @@ public class Board {
                 }
             }
         } else {
-            if (rowPlace <= (rows - Ship.shipAmountSizeing[barca])) {
+            if (rowPlace > (rows - Ship.shipAmountSizeing[barca])) {
+                return false;
+            } else {
                 for (int j = 0; j < Ship.shipAmountSizeing[barca]; j++) {
-                    if (!gameBoard[rowPlace + j][colPlace].isIsPartShip()){
+                    if (gameBoard[rowPlace + j][colPlace].isIsPartShip()) {
+                        return false;
+                    } else {
                         count++;
                         if (count == Ship.shipAmountSizeing[barca]) {
                             return true;
                         }
                     }
-                    else return false;
                 }
             }
-
         }
         return false;
     }
@@ -62,59 +64,22 @@ public class Board {
                 if (direction == 0){
                     for (int i = 0; i < Ship.shipAmountSizeing[count]; i++) {
 
-                        gameBoard[rowPlace][colPlace+i].isPartShip(); ////////////////////////////
+                        gameBoard[rowPlace][colPlace+i].isPartShip();
                     }
                 } else {
                     for (int i = 0; i < Ship.shipAmountSizeing[count]; i++) {
 
-                        gameBoard[rowPlace][colPlace].isPartShip(); ///////////////////////////////////
+                        gameBoard[rowPlace][colPlace].isPartShip();
                         rowPlace++;
                     }
                 }
+                count++;
             }
-
-//            if (direction == 0) { // horizontal
-//
-//                if (colPlace <= (columns - Ship.shipAmountSizeing[count])) {
-//
-//                    for (int j = 0; j < Ship.shipAmountSizeing[count]; j++) {
-//
-//                        if (!gameBoard[rowPlace][colPlace].isIsPartShip()){
-//
-//
-//                        }
-//                    }
-//
-//                    // SI no hi ha cap vaixell a l'interval de posicions [] determinat per rowPlace, colPlace i el tamany i orientacio llavors
-//
-//                    for (int i = 0; i < Ship.shipAmountSizeing[count]; i++) {
-//
-//                        gameBoard[rowPlace][colPlace+i].isPartShip(); ////////////////////////////
-//                    }
-//                }
-//            } else { // vertical
-//
-//                if (rowPlace <= (rows - Ship.shipAmountSizeing[count])) {
-//
-//                    for (int j = 0; j < Ship.shipAmountSizeing[count]; j++) {
-//
-//                        if (!gameBoard[rowPlace][colPlace].isIsPartShip()){ ////////////////////////////////
-//
-//                            for (int i = 0; i < Ship.shipAmountSizeing[count]; i++) {
-//
-//                                gameBoard[rowPlace][colPlace].isPartShip(); ///////////////////////////////////
-//                                rowPlace++;
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-            count++;
         }
     }
 
     public boolean validPosition(int row, int col) {
-        return true;
+        return (row >= 0 && row < gameBoard.length) && (col >= 0 && col < gameBoard[0].length);
     }
 
     public static int getColumns() {
@@ -132,14 +97,35 @@ public class Board {
     public void toggleHidden(){
         for (int i = 0; i < Board.getRows(); i++) {
             for (int j = 0; j < Board.getColumns(); j++) {
-                //gameBoard.getGameBoard()
                 gameBoard[i][j].toggleReveal();
             }
         }
     }
 
+    public void reveal(int row, int col) {
+        gameBoard[row][col].toggleReveal();
+        gameBoard[row][col].Hit();
+    }
+
     public boolean hitted(int x, int y){
         return gameBoard[x][y].isIsPartShip();
+    }
+
+    public int totalShips() {
+        int total = 0;
+
+        for (int i = 0; i < Board.getRows(); i++) {
+            for (int j = 0; j < Board.getColumns(); j++) {
+                if (gameBoard[i][j].isIsPartShip() && gameBoard[i][j].isHitted()) {
+                    total++;
+                }
+            }
+        }
+        return total;
+    }
+
+    public boolean winCond() {
+        return totalShips() == 44;
     }
 
 }

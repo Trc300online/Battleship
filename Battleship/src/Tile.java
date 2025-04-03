@@ -20,22 +20,26 @@ public class Tile {
         return this.partShip;
     }
 
-    public boolean setIsReveal(boolean isReveal) {
-        this.isReveal = isReveal;
-        return isReveal;
-    }
-
     public boolean toggleReveal() {
         return isReveal = !isReveal;
     }
 
+    public void Hit(){
+        isHitted = true;
+    }
+
+    public boolean isHitted() {
+        return this.isHitted;
+    }
+
 
     public String toString(){
+
+        if (this.isHitted && this.partShip) {
+            return  " \uD83D\uDCA5";
+        }
         if (!isReveal) {
             return  " \uD83C\uDF2B\uFE0F";
-        }
-        if (this.isHitted) {
-            return  " \uD83D\uDCA5";
         }
         if (this.partShip) {
             return  " ⛵";

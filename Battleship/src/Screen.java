@@ -1,13 +1,6 @@
 import java.util.Scanner;
 
 public class Screen {
-    /* Ship types:
-    * 1 carrier: size 5
-    * 2 battleship: size 4
-    * 3 destroyer: size 3
-    * 4 submarine: size 3
-    * 5 patrol boat: size 2
-    * */
 
     public static int getRows() {
         System.out.println("Row: ");
@@ -28,5 +21,19 @@ public class Screen {
             }
             System.out.println();
         }
+        System.out.println();
+        System.out.println();
+    }
+
+    public static void missMsg() {
+        System.out.println("no es torba cap vaixell a aquesta posició!");
+    }
+
+    public static void hitMsg() {
+        System.out.println("vaixell ferit!");
+    }
+
+    public static void winMsg(){
+        System.out.println("Has guanyat!");
     }
 }

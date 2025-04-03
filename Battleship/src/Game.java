@@ -1,46 +1,49 @@
 public class Game {
 
     public void startGame(){
-        System.out.println("hola");
 
+        Board[] boards = { new Board(), new Board()};
 
-        Board board1 = new Board(); // substituir board1 i board2 per use of count
-        board1.toggleHidden();
-        Screen.printBoard(board1);
-        System.out.println("|||||||||||||||||||||||||||||||||||||");
+        int count = 0;
 
-        Board board2 = new Board();
-        Screen.printBoard(board2);
+        while (!boards[(count + 1) % 2].winCond()) {
 
-        boolean gameContinues = true;
-        int count = 1;
+            boards[(count + 1) % 2].toggleHidden();
 
-        /*while (gameContinues) {
+            for (int k = 0; k < 2; k++) {
 
-
-            int x = Screen.getRows();
-            int y = Screen.getColumns();
-            if (!board1.hitted(x, y)){ // --> in board: if hitted == water return false;
-                Board.reveal();
-                if (count == 1){
-                    count = 2;
-                } else {
-                    count = 1;
-                }
-            } else {
-                Board.revela(moves);
-                if (ship.lastPart){
-                    Screen.hundidoMsg();
-                } else {
-                    Screen.hitMsg();
-                }
-                // winCond
-                if (Board.shipCount(count) == 0) {
-                    Screen.winMsg;
-                    gameContinues = false;
-                }
+                Screen.printBoard(boards[k]);
             }
 
-        }*/
+            int x;
+            int y;
+
+            do {
+                x = Screen.getRows();
+                y = Screen.getColumns();
+
+            } while (!boards[(count + 1) % 2].validPosition(x, y));
+
+            // processar dispar
+
+            // si no he endivinat ==> canvi de player ==> cont++
+
+            // calcul condicio d'acabament
+
+            if (!boards[(count + 1) % 2].hitted(x, y)) {
+
+                Screen.missMsg();
+                boards[(count + 1) % 2].reveal(x, y);
+                boards[(count + 1) % 2].toggleHidden();
+                count++;
+
+
+            } else {
+
+                boards[(count + 1) % 2].reveal(x, y);
+                Screen.hitMsg();
+            }
+        }
+        Screen.winMsg();
     }
 }
