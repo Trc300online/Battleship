@@ -36,4 +36,10 @@ public class Screen {
     public static void winMsg(){
         System.out.println("Has guanyat!");
     }
+
+    public static void errorMsg(int errorCode) {
+        if (errorCode == 1) {
+            System.out.println("No se accepten lletres!");
+        }
+    }
 }

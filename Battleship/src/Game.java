@@ -10,6 +10,7 @@ public class Game {
 
         while (!boards[(count + 1) % 2].winCond()) {
 
+            try {
             for (int k = 0; k < 2; k++) {
 
                 Screen.printBoard(boards[k]);
@@ -44,6 +45,9 @@ public class Game {
                 boards[(count) % 2].reveal(x, y);
                 boards[(count) % 2].giveHit(x, y);
                 Screen.hitMsg();
+            }
+            } catch (NumberFormatException nfe) {
+                Screen.errorMsg(1);
             }
         }
         Screen.winMsg();

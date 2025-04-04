@@ -14,9 +14,7 @@ public enum ShipType {
                 return 5;
             case battleship:
                 return 4;
-            case destroyer:
-                return 3;
-            case submarine:
+            case destroyer, submarine:
                 return 3;
             case patrol_boat:
                 return 2;
