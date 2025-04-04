@@ -97,7 +97,9 @@ public class Board {
     public void toggleHidden(){
         for (int i = 0; i < Board.getRows(); i++) {
             for (int j = 0; j < Board.getColumns(); j++) {
-                gameBoard[i][j].toggleReveal();
+                if (!gameBoard[i][j].isHitted()) {
+                    gameBoard[i][j].toggleReveal();
+                }
             }
         }
     }
@@ -126,6 +128,10 @@ public class Board {
 
     public boolean winCond() {
         return totalShips() == 44;
+    }
+
+    public void giveHit(int row, int col){
+        gameBoard[row][col].Hit();
     }
 
 }

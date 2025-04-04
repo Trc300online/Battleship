@@ -44,6 +44,9 @@ public class Tile {
         if (this.partShip) {
             return  " ⛵";
         }
+        if (this.isWater && this.isHitted) {
+            return " \uD83E\uDEE7";
+        }
         if (this.isWater) {
             return  " \uD83C\uDF0A";
         }

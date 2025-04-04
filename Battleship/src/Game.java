@@ -6,9 +6,9 @@ public class Game {
 
         int count = 0;
 
-        while (!boards[(count + 1) % 2].winCond()) {
+        boards[(count + 1) % 2].toggleHidden();
 
-            boards[(count + 1) % 2].toggleHidden();
+        while (!boards[(count + 1) % 2].winCond()) {
 
             for (int k = 0; k < 2; k++) {
 
@@ -30,17 +30,19 @@ public class Game {
 
             // calcul condicio d'acabament
 
-            if (!boards[(count + 1) % 2].hitted(x, y)) {
+            if (!boards[(count) % 2].hitted(x, y)) {
 
                 Screen.missMsg();
-                boards[(count + 1) % 2].reveal(x, y);
+                boards[(count) % 2].reveal(x, y);
                 boards[(count + 1) % 2].toggleHidden();
                 count++;
+                boards[(count + 1) % 2].toggleHidden();
 
 
             } else {
 
-                boards[(count + 1) % 2].reveal(x, y);
+                boards[(count) % 2].reveal(x, y);
+                boards[(count) % 2].giveHit(x, y);
                 Screen.hitMsg();
             }
         }
