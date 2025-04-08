@@ -1,6 +1,6 @@
 public class Game {
 
-    public void startGame(){
+    public void gameLogic(){
 
         Board[] boards = { new Board(), new Board()};
 
@@ -11,41 +11,35 @@ public class Game {
         while (!boards[(count + 1) % 2].winCond()) {
 
             try {
-            for (int k = 0; k < 2; k++) {
+                for (int k = 0; k < 2; k++) {
 
-                Screen.printBoard(boards[k]);
-            }
+                    Screen.printBoard(boards[k]);
+                }
 
-            int x;
-            int y;
+                int x;
+                int y;
 
-            do {
-                x = Screen.getRows();
-                y = Screen.getColumns();
+                do {
+                    x = Screen.getRows();
+                    y = Screen.getColumns();
 
-            } while (!boards[(count + 1) % 2].validPosition(x, y));
+                } while (!boards[(count + 1) % 2].validPosition(x, y));
 
-            // processar dispar
+                if (!boards[(count) % 2].hitted(x, y)) {
 
-            // si no he endivinat ==> canvi de player ==> cont++
-
-            // calcul condicio d'acabament
-
-            if (!boards[(count) % 2].hitted(x, y)) {
-
-                Screen.missMsg();
-                boards[(count) % 2].reveal(x, y);
-                boards[(count + 1) % 2].toggleHidden();
-                count++;
-                boards[(count + 1) % 2].toggleHidden();
+                    Screen.missMsg();
+                    boards[(count) % 2].reveal(x, y);
+                    boards[(count + 1) % 2].toggleHidden();
+                    count++;
+                    boards[(count + 1) % 2].toggleHidden();
 
 
-            } else {
+                } else {
 
-                boards[(count) % 2].reveal(x, y);
-                boards[(count) % 2].giveHit(x, y);
-                Screen.hitMsg();
-            }
+                    boards[(count) % 2].reveal(x, y);
+                    boards[(count) % 2].giveHit(x, y);
+                    Screen.hitMsg();
+                }
             } catch (NumberFormatException nfe) {
                 Screen.errorMsg(1);
             }

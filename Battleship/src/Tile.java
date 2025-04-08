@@ -1,13 +1,11 @@
 public class Tile {
 
-    private boolean isWater;
     private boolean isHitted;
     private boolean partShip;
     private boolean isReveal;
 
     public Tile(){
         this.partShip = false;
-        this.isWater = true;
         this.isHitted = false;
         this.isReveal = false;
     }
@@ -44,12 +42,10 @@ public class Tile {
         if (this.partShip) {
             return  " ⛵";
         }
-        if (this.isWater && this.isHitted) {
+        if (this.isHitted) {
             return " \uD83E\uDEE7";
         }
-        if (this.isWater) {
-            return  " \uD83C\uDF0A";
-        }
-        return null;
+
+        return  " \uD83C\uDF0A";
     }
 }
